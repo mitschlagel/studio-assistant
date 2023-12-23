@@ -1,8 +1,10 @@
 import React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 
-import RoomList
- from "../components/RoomList";
+import RoomList from "../components/RoomList";
+
+
+
 const Rooms: React.FC = () => {
     return(
         <SafeAreaView style={styles.container}>

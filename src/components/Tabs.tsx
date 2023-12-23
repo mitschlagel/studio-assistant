@@ -1,33 +1,69 @@
-import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
+import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
 
-import Rooms from '../screens/Rooms';
-import Messages from '../screens/Messages';
-import Calendar from '../screens/Calendar';
-import Library from '../screens/Library';
+import RoomsStack from '../stacks/RoomsStack';
+import MessagesStack from '../stacks/MessagesStack';
+import ScheduleStack from '../stacks/ScheduleStack';
+import LibraryStack from '../stacks/LibraryStack';
+import { Icon } from 'react-native-paper';
 
-const Tabs = () => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'rooms', title: 'Rooms', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
-    { key: 'messages', title: 'Messages', focusedIcon: 'message', unfocusedIcon: 'message-outline' },
-    { key: 'calendar', title: 'Calendar', focusedIcon: 'calendar', unfocusedIcon: 'calendar-outline' },
-    { key: 'library', title: 'Library', focusedIcon: 'book', unfocusedIcon: 'book-outline' },
-  ]);
+const Tab = createMaterialBottomTabNavigator();
 
-  const renderScene = BottomNavigation.SceneMap({
-    rooms: Rooms,
-    messages: Messages,
-    calendar: Calendar,
-    library: Library,
-  });
-
+export const Tabs = () => {
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
+    <Tab.Navigator
+      initialRouteName="Rooms"
+      shifting={true}
+      sceneAnimationEnabled={false}
+    >
+      <Tab.Screen
+        name="Rooms"
+        component={RoomsStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon 
+              source={focused ? "home" : "home-outline"}
+              size={28}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Messages"
+        component={MessagesStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              source={focused ? "message-text" : "message-text-outline"}
+              size={28}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Schedule"
+        component={ScheduleStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Icon
+              source={focused ? "calendar" : "calendar-outline"}
+              size={28}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Library"
+        component={LibraryStack}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Icon
+              source={focused ? "book" : "book-outline"}
+              size={28}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
