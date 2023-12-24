@@ -2,7 +2,7 @@ import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navig
 
 import RoomsStack from '../stacks/RoomsStack';
 import MessagesStack from '../stacks/MessagesStack';
-import ScheduleStack from '../stacks/ScheduleStack';
+import CalendarStack from '../stacks/CalendarStack';
 import LibraryStack from '../stacks/LibraryStack';
 import { Icon } from 'react-native-paper';
 
@@ -40,8 +40,8 @@ export const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Schedule"
-        component={ScheduleStack}
+        name="Calendar"
+        component={CalendarStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon

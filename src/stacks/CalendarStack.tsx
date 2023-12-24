@@ -2,11 +2,11 @@ import React from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Library from "../screens/Library";
+import Calendar from "../screens/Calendar";
 
 const Stack = createNativeStackNavigator();
 
-const LibraryStack: React.FC = () => {
+const CalendarStack: React.FC = () => {
     return(
         <Stack.Navigator
         screenOptions={{
@@ -16,10 +16,10 @@ const LibraryStack: React.FC = () => {
             headerTitleStyle: {
                 color: '#1c1b1f'
             }
-        }}>    
-            <Stack.Screen name="Library" component={Library} />
-        </Stack.Navigator>        
+        }}> 
+            <Stack.Screen name="Calendar" component={Calendar} />
+        </Stack.Navigator> 
     );
 }
 
-export default LibraryStack;
+export default CalendarStack;

@@ -1,6 +1,8 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { View, Text, StyleSheet } from "react-native";
 
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 const Tab = createMaterialTopTabNavigator();
 
 const RehearsalSchedule = () => {
@@ -11,7 +13,7 @@ const RehearsalSchedule = () => {
   );
 }
 
-const SemesterSchedule = () => {
+const SemesterCalendar = () => {
     return (
       <View style={styles.container}>
         <Text>Semester Schedule</Text>
@@ -19,16 +21,18 @@ const SemesterSchedule = () => {
     );
   }
 
-function ScheduleTabs() {
+function Calendar() {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarIndicatorStyle: { backgroundColor: "#1c1b1f" },
-      }}
-    >
-      <Tab.Screen name="Rehearsal" component={RehearsalSchedule} />
-      <Tab.Screen name="Semester" component={SemesterSchedule} />
-    </Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarIndicatorStyle: { backgroundColor: "#1c1b1f" },
+        }}
+      >
+        <Tab.Screen name="Rehearsal" component={RehearsalSchedule} />
+        <Tab.Screen name="Semester" component={SemesterCalendar} />
+      </Tab.Navigator>
+    
+    
   );
 }
 
@@ -37,8 +41,8 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: "#fff",
       alignItems: "center",
-      justifyContent: 'center',
+      justifyContent: "center"
   }
 });
 
-export default ScheduleTabs;
+export default Calendar;
