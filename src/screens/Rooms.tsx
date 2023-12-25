@@ -1,29 +1,58 @@
 import React from "react";
 
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
-import RoomSchedule from "./RoomSchedule";
 import RoomAvailability from "./RoomAvailability";
-
-const Tab = createMaterialTopTabNavigator();
-
+import { RoomAvailabilityProps } from "../types/types";
 
 
 
 
 const Rooms: React.FC = () => {
-    return(
-        <Tab.Navigator
-            screenOptions={{
-                tabBarIndicatorStyle: { backgroundColor: "#1c1b1f" },
-            }}
-        >
-            <Tab.Screen name="Availability" component={RoomAvailability} />
-            <Tab.Screen name="Schedule" component={RoomSchedule} />
-        </Tab.Navigator>
+
+    const roomData: RoomAvailabilityProps = {
+        facilityName: "UNO Percussion Practice Rooms",
+        rooms: [
+            {
+                id: 0,
+                name: "Rehearsal Room",
+                available: true
+    
+            },
+            {
+                id: 1,
+                name: "Window Room",
+                available: false
+    
+            },
+            {
+                id: 2,
+                name: "World Room",
+                available: false
+    
+            },
+            {
+                id: 3,
+                name: "Orchestral Room",
+                available: true
+    
+            },
+            {
+                id: 4,
+                name: "Marimba Room",
+                available: false
+    
+            },
+            {
+                id: 5,
+                name: "Drum Set Room",
+                available: true
+    
+            }
+        ]
+    }
+
+    return (
+            <RoomAvailability facilityName={roomData.facilityName} rooms={roomData.rooms} />
     );
 }
-
-
 
 export default Rooms;

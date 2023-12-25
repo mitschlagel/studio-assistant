@@ -1,10 +1,12 @@
 import { SafeAreaView, StyleSheet } from "react-native";
 import RoomList from "../components/RoomList";
 
-const RoomAvailability: React.FC = () => {
+import { RoomAvailabilityProps } from "../types/types";
+
+const RoomAvailability: React.FC<RoomAvailabilityProps> = ({facilityName, rooms}) => {
     return(
         <SafeAreaView style={styles.container}>
-            <RoomList/>
+            <RoomList facilityName={facilityName} rooms={rooms}/>
         </SafeAreaView>
     );
 }
@@ -19,3 +21,4 @@ const styles = StyleSheet.create({
 });
 
 export default RoomAvailability;
+
